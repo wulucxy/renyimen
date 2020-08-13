@@ -1,0 +1,74 @@
+@import './variable.less';
+
+html{
+  scroll-behavior: smooth;
+}
+body{
+  font-family:  "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+  letter-spacing: 0;
+}
+.flex{
+  display: flex;
+}
+.flex-v-center{
+  align-items: center;
+}
+.primary{
+  color: @primaryColor;
+}
+.link{
+  color: @linkColor;
+}
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+.lh-32{
+  line-height: 32px;
+}
+
+.ant-layout-sider-dark .logo{
+  padding-left: 10px;
+  margin-bottom: 20px;
+  a{
+    color: #fff;
+  }
+  .title{
+    color: #fff;
+    margin-bottom: 0;
+    margin-left: 6px;
+    font-size: 20px;
+  }
+  .tagline{
+    margin-top: -16px;
+  }
+}
+
+.content-banner, .products-container{
+  margin: 0 auto;
+}
+
+.content-banner{
+  img{
+    margin: 0 auto;
+  }
+}
+
+.content-banner, .products-container{
+  width: 1380px;
+}
+
+@media only screen and (max-width: 1680px) {
+  .content-banner, .products-container{
+    width: 1080px;
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .content-banner, .products-container{
+    width: 960px;
+  }
+}

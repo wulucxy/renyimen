@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_menu_products",
+  "info": {
+    "name": "product",
+    "icon": "book-open"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "richtext"
+    }
+  }
+}

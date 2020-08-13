@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "name": "category"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "menu": {
+      "via": "categories",
+      "model": "menu"
+    },
+    "products": {
+      "collection": "product",
+      "via": "category"
+    }
+  }
+}
