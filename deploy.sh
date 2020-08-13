@@ -32,7 +32,7 @@ init() {
 }
 
 start() {
-  cd api && pm2 start --name strapi-service server.js
+  cd api && pm2 startOrRestart process.json --only production
   cd ${cur_dir}
 }
 
