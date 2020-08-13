@@ -23,11 +23,11 @@ clean() {
 # 初始化启动
 init() {
   # 后端编译
-  cd api && npm install && NODE_ENV=production npm run build
+  cd api && cnpm install && NODE_ENV=production npm run build
   cd ${cur_dir}
 
   # 前端编译
-  cd client && npm install && npm run build
+  cd client && cnpm install && npm run build
   cd ${cur_dir}
 }
 
