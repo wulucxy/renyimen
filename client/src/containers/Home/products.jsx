@@ -7,6 +7,13 @@ import { prefix } from '../../utils'
 
 function Products(props) {
   const { productsMap, categoryIds } = props;
+
+  // todo: 日志
+  const handleClick = product => {
+    window.location = product.url
+    return false
+  }
+
   return (
     <StyledContainer className='products-container'>
       {
@@ -22,7 +29,7 @@ function Products(props) {
                   {
                     products.map(product => (
                       <Col span={6} key={product.id}>
-                        <StyledCard>
+                        <StyledCard onClick={() => handleClick(product)}>
                           <h3 className="flex flex-v-center link">
                             <Icon type={product.icon} style={{ fontSize: 32, marginRight: 10 }} />
                             <div className="lh-32">{product.title}</div>
