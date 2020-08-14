@@ -14,7 +14,7 @@ exit
 
 # 清理文件
 clean() {
-  cd api && rm -rf node_modules .cache build .tmp
+  cd api && rm -rf node_modules .cache build
   cd ${cur_dir}
 
   cd client && rm -rf node_modules

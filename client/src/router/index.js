@@ -124,7 +124,7 @@ export default function CoreRouter(){
         tagline="之江实验室信息导航"
       >
         <Switch>
-          <Route path="/renyimen/" component={Home} exact />
+          <Route path="/" component={Home} exact />
         </Switch>
       </BasicLayout>
     </Fragment>
