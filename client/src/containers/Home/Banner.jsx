@@ -12,8 +12,9 @@ function Home() {
       <Carousel autoplay>
         {banners.map(d => {
           const imgUrl = `${publicPath}${d.img.url}`
+          const target = d.url.startsWith('http') ? "_blank" : '_self'
           return (
-            <a key={d.id} href={d.url} target="_blank">
+            <a key={d.id} href={d.url} target={target}>
               <img src={imgUrl} alt={d.title} />
             </a>
           )
