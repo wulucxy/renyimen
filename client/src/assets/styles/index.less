@@ -19,6 +19,9 @@ body{
 .link{
   color: @linkColor;
 }
+.ant-layout-sider-children{
+  overflow: scroll;
+}
 .ant-carousel .slick-slide {
   text-align: center;
   height: 160px;
@@ -45,6 +48,18 @@ body{
   .tagline{
     margin-top: -16px;
   }
+}
+
+.ant-divider-inner-text{
+  padding: 1px 50px;
+  background: #f5f5f5;
+  border: 1px solid #dedee4;
+  border-radius: 13px;
+  font-weight: normal;
+}
+
+.ant-divider-horizontal.ant-divider-with-text::before, .ant-divider-horizontal.ant-divider-with-text::after{
+  border-color: #dedee4;
 }
 
 .content-banner, .products-container{

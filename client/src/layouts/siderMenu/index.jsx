@@ -15,7 +15,7 @@ const SiderMenu = props => {
           {typeof logo === 'string' && <img className="responsive" src={logo} alt={title} />}
           {title && <h1 className='title'>{title}</h1>}
         </div>
-        {(tagline && !collapsed) && <div class='tagline'>{tagline}</div>}
+        {(tagline && !collapsed) && <div className='tagline'>{tagline}</div>}
       </Link>
     </div>
   )

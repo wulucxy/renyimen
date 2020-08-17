@@ -12,18 +12,26 @@
     "title": {
       "type": "string"
     },
-    "icon": {
-      "type": "string"
-    },
     "desc": {
       "type": "text"
     },
     "category": {
-      "via": "products",
-      "model": "category"
+      "model": "category",
+      "via": "products"
     },
     "url": {
       "type": "string"
+    },
+    "iconUrl": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }

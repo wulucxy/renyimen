@@ -27,3 +27,6 @@ export const scrollTo = (position) => {
     });
   });
 }
+
+// 文件路径前缀
+export const publicPath = process.env.REACT_APP_BACKEND_URL

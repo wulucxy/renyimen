@@ -57,7 +57,10 @@ export default function CoreRouter(){
     // 获取分类 ids
     const categoryIds = getSubMenuInfo(menus, d => d.path)
     categoryIds.forEach(category => {
-      anchors[category] = document.getElementById(`${prefix}${category}`).getBoundingClientRect().top
+      // 存在当前的分类
+      if (document.getElementById(`${prefix}${category}`)) {
+        anchors[category] = document.getElementById(`${prefix}${category}`).getBoundingClientRect().top
+      }
     })
     setState(prev => ({
       ...prev,

@@ -5,7 +5,9 @@ const GET_PRODUCTS = gql`
     products {
       id
       title
-      icon
+      iconUrl {
+        url
+      }
       desc
       url
       category {

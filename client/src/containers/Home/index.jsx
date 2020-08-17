@@ -17,15 +17,15 @@ function Home() {
   }))
 
   // 按照顺序的产品列表
-  let orderProducts = {}
+  let productsMap = new Map()
 
   categoryIds.forEach(({ categoryId }) => {
     products.forEach(product => {
       if(Number(product.category.id) === categoryId) {
-        if(!orderProducts[categoryId]){
-          orderProducts[categoryId] = [product]
+        if(!productsMap[categoryId]){
+          productsMap.set(categoryId, [product])
         } else {
-          orderProducts[categoryId].push(product)
+          productsMap.get(categoryId).push(product)
         }
       }
     })
@@ -34,7 +34,7 @@ function Home() {
   return (
     <div>
       <Banner />
-      <Products productsMap={orderProducts} categoryIds={categoryIds} />
+      <Products productsMap={productsMap} categoryIds={categoryIds} />
     </div>
   );
 }

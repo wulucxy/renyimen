@@ -3,7 +3,7 @@ import { Row, Col, Card, Divider } from 'antd';
 import styled from 'styled-components';
 import { Icon } from '@ant-design/compatible';
 
-import { prefix } from '../../utils'
+import { prefix, publicPath } from '../../utils'
 
 function Products(props) {
   const { productsMap, categoryIds } = props;
@@ -17,10 +17,10 @@ function Products(props) {
   return (
     <StyledContainer className='products-container'>
       {
-        Object.keys(productsMap).map(categoryId => {
+        [...productsMap.keys()].map(categoryId => {
           // 类别名称
           const { name: categoryName, path } = (categoryIds.find(d => d.categoryId === Number(categoryId)) || {})
-          const products = productsMap[categoryId]
+          const products = productsMap.get(categoryId)
           return (
             <StyledSection id={`${prefix}${path}`} className='product-item' key={categoryId}>
               <Divider>{ categoryName }</Divider>
@@ -31,7 +31,9 @@ function Products(props) {
                       <Col span={6} key={product.id}>
                         <StyledCard onClick={() => handleClick(product)}>
                           <h3 className="flex flex-v-center link">
-                            <Icon type={product.icon} style={{ fontSize: 32, marginRight: 10 }} />
+                            <StyledIcon className='product-icon' style={{
+                              backgroundImage: `url(${publicPath}${product.iconUrl?.url})` 
+                            }} />
                             <div className="lh-32">{product.title}</div>
                           </h3>
                           <div>
@@ -76,7 +78,15 @@ const StyledCard = styled(Card)`
     box-shadow: 0 6px 12px 0 rgba(65, 80, 88, 0.14);
     top: -4px;
   }
+`;
 
-`
+const StyledIcon = styled.div`
+  width: 32px;
+  height: 32px;
+  margin-right: 4px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+`;
 
 export default Products;

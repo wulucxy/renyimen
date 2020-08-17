@@ -7,7 +7,7 @@ function Home() {
  const { banners } = useContext(StoreContext);
 
   return (
-    <div class="content-banner">
+    <div className="content-banner">
       <Carousel autoplay>
         {banners.map(d => (
           <a key={d.id} href={d.url}>

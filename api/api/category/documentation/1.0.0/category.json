@@ -572,9 +572,6 @@
                 "title": {
                   "type": "string"
                 },
-                "icon": {
-                  "type": "string"
-                },
                 "desc": {
                   "type": "string"
                 },
@@ -582,6 +579,9 @@
                   "type": "string"
                 },
                 "url": {
+                  "type": "string"
+                },
+                "iconUrl": {
                   "type": "string"
                 },
                 "created_by": {
