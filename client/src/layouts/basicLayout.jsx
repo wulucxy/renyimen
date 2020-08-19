@@ -25,6 +25,8 @@ const BasicLayout = (props) => {
   // todo: 需要根据外部值来设定默认
   const [collapsed, onCollapse] = useCollapsed()
 
+  const layoutStyle = collapsed ? {} : { marginLeft: 200 }
+
   return (
     <div>
         <Layout
@@ -50,7 +52,7 @@ const BasicLayout = (props) => {
               height: '100%'
             }}
           />
-          <Layout style={{ marginLeft: 200 }}>
+          <Layout className="content-layout" style={layoutStyle}>
             <Content>
               <div id={`${prefix}-content`}>
                 {children}

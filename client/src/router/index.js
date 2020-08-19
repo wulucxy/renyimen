@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { throttle } from 'lodash'
 
 import Home from '../containers/Home'
@@ -128,6 +128,7 @@ export default function CoreRouter(){
       >
         <Switch>
           <Route path="/" component={Home} exact />
+          <Redirect to="/" />
         </Switch>
       </BasicLayout>
     </Fragment>
