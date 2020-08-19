@@ -10,10 +10,8 @@ const defaultIconUrl = require('../../assets/img/sad.png')
 function Products(props) {
   const { productsMap, categoryIds } = props;
 
-  // todo: 日志
   const handleClick = product => {
-    window.location = product.url
-    return false
+    // todo: 日志
   }
 
   return (
@@ -34,15 +32,17 @@ function Products(props) {
                       return (
                         <Col span={6} key={product.id}>
                           <StyledCard onClick={() => handleClick(product)}>
-                            <h3 className="flex flex-v-center link">
-                              <StyledIcon className='product-icon' style={{
-                                backgroundImage: `url(${productImg})`
-                              }} />
-                              <div className="lh-32 ellipsis">{product.title}</div>
-                            </h3>
-                            <div>
-                              {product.desc}
-                            </div>
+                            <a href={product.url} target="_blank">
+                              <h3 className="flex flex-v-center link">
+                                <StyledIcon className='product-icon' style={{
+                                  backgroundImage: `url(${productImg})`
+                                }} />
+                                <div className="lh-32 ellipsis">{product.title}</div>
+                              </h3>
+                              <div>
+                                {product.desc}
+                              </div>
+                            </a>
                           </StyledCard>
                         </Col>
                       )
@@ -85,7 +85,13 @@ const StyledCard = styled(Card)`
     top: -4px;
   }
   .ant-card-body{
-    padding: 20px 16px;
+    padding: 0;
+    height: 100%;
+    a{
+      display: block;
+      padding: 20px 16px;
+      height: 100%;
+    }
   }
 `;
 
