@@ -21,6 +21,10 @@ export const scrollTo = (position) => {
       }
     };
     window.addEventListener('scroll', scrollListener);
+    if(position === window.scrollY) {
+      resolve()
+      return
+    }
     window.scrollTo({
       top: position,
       behavior: 'smooth',

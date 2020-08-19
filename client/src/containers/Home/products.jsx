@@ -34,7 +34,7 @@ function Products(props) {
                             <StyledIcon className='product-icon' style={{
                               backgroundImage: `url(${publicPath}${product.iconUrl?.url})` 
                             }} />
-                            <div className="lh-32">{product.title}</div>
+                            <div className="lh-32 ellipsis">{product.title}</div>
                           </h3>
                           <div>
                             {product.desc}
@@ -71,13 +71,16 @@ const StyledCard = styled(Card)`
   cursor: pointer;
   position: relative;
   height: 128px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   border-radius: 4px;
   transition: all 0.2s ease-in-out;
   top: 0;
   &:hover{
     box-shadow: 0 6px 12px 0 rgba(65, 80, 88, 0.14);
     top: -4px;
+  }
+  .ant-card-body{
+    padding: 20px 16px;
   }
 `;
 
