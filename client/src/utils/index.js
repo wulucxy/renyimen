@@ -9,6 +9,9 @@ export const getQueryParams = (location, n) => {
 export const prefix = 'zj-nav-'
 
 export const scrollTo = (position) => {
+  // 窗口最大滚动距离
+  const maxScrollY = document.documentElement.scrollHeight - document.documentElement.clientHeight
+
   return new Promise(resolve => {
     const scrollListener = e => {
       if ('undefined' === typeof e) {
@@ -18,10 +21,13 @@ export const scrollTo = (position) => {
       if (target.scrollY === position) {
         target.removeEventListener('scroll', scrollListener);
         resolve();
+      } else if (target.scrollY === maxScrollY){
+        resolve()
       }
     };
     window.addEventListener('scroll', scrollListener);
-    if(position === window.scrollY) {
+    // 已经滚动到最底部，无法再触发滚动
+    if(window.scrollY === maxScrollY) {
       resolve()
       return
     }

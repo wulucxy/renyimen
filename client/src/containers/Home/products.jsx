@@ -5,6 +5,8 @@ import { Icon } from '@ant-design/compatible';
 
 import { prefix, publicPath } from '../../utils'
 
+const defaultIconUrl = require('../../assets/img/sad.png')
+
 function Products(props) {
   const { productsMap, categoryIds } = props;
 
@@ -27,21 +29,24 @@ function Products(props) {
               <StyledContent className="content-wrapper">
                 <Row gutter={32}>
                   {
-                    products.map(product => (
-                      <Col span={6} key={product.id}>
-                        <StyledCard onClick={() => handleClick(product)}>
-                          <h3 className="flex flex-v-center link">
-                            <StyledIcon className='product-icon' style={{
-                              backgroundImage: `url(${publicPath}${product.iconUrl?.url})` 
-                            }} />
-                            <div className="lh-32 ellipsis">{product.title}</div>
-                          </h3>
-                          <div>
-                            {product.desc}
-                          </div>
-                        </StyledCard>
-                      </Col>
-                    ))
+                    products.map(product => {
+                      const productImg = product.iconUrl ? `${publicPath}${product.iconUrl?.url}` : defaultIconUrl
+                      return (
+                        <Col span={6} key={product.id}>
+                          <StyledCard onClick={() => handleClick(product)}>
+                            <h3 className="flex flex-v-center link">
+                              <StyledIcon className='product-icon' style={{
+                                backgroundImage: `url(${productImg})`
+                              }} />
+                              <div className="lh-32 ellipsis">{product.title}</div>
+                            </h3>
+                            <div>
+                              {product.desc}
+                            </div>
+                          </StyledCard>
+                        </Col>
+                      )
+                    })
                   }                
                 </Row>
               </StyledContent>
@@ -87,7 +92,7 @@ const StyledCard = styled(Card)`
 const StyledIcon = styled.div`
   width: 32px;
   height: 32px;
-  margin-right: 4px;
+  margin-right: 8px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
