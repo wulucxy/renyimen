@@ -26,8 +26,8 @@ export const scrollTo = (position) => {
       }
     };
     window.addEventListener('scroll', scrollListener);
-    // 已经滚动到最底部，无法再触发滚动
-    if(window.scrollY === maxScrollY) {
+    // 已经滚动到最底部，无法再触发再向下滚动
+    if(window.scrollY === maxScrollY && position >= maxScrollY) {
       resolve()
       return
     }
