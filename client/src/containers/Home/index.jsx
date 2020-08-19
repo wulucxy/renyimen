@@ -22,7 +22,7 @@ function Home() {
   categoryIds.forEach(({ categoryId }) => {
     products.forEach(product => {
       if(Number(product.category.id) === categoryId) {
-        if(!productsMap[categoryId]){
+        if(!productsMap.get(categoryId)){
           productsMap.set(categoryId, [product])
         } else {
           productsMap.get(categoryId).push(product)
