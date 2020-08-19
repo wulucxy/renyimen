@@ -1,7 +1,6 @@
 import React from 'react';
 import { Row, Col, Card, Divider } from 'antd';
 import styled from 'styled-components';
-import { Icon } from '@ant-design/compatible';
 
 import { prefix, publicPath } from '../../utils'
 
@@ -32,14 +31,14 @@ function Products(props) {
                       return (
                         <Col span={6} key={product.id}>
                           <StyledCard onClick={() => handleClick(product)}>
-                            <a href={product.url} target="_blank">
+                            <a href={product.url} target="_blank" rel="noopener noreferrer">
                               <h3 className="flex flex-v-center link">
                                 <StyledIcon className='product-icon' style={{
                                   backgroundImage: `url(${productImg})`
                                 }} />
                                 <div className="lh-32 ellipsis">{product.title}</div>
                               </h3>
-                              <div>
+                              <div className="common">
                                 {product.desc}
                               </div>
                             </a>
