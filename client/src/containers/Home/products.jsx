@@ -71,6 +71,7 @@ const StyledCard = styled(Card)`
   cursor: pointer;
   position: relative;
   height: 128px;
+  margin-bottom: 16px;
   border-radius: 4px;
   transition: all 0.2s ease-in-out;
   top: 0;
