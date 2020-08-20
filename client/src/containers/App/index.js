@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { useApolloClient } from '@apollo/client'
+import { isNil } from 'lodash'
 
 import { MenuContextProvider, StoreContextProvider } from '../../contexts';
 import CoreRoute from '../../router'
@@ -47,7 +48,19 @@ function App() {
   if (loading) return null;
   if (error) return `Error! ${error.message}`;
 
-  const menus = data.menus.map(d => {
+  const orderedMenu = data.menus.slice().sort((a, b) => {
+    if(!isNil(a.order) && !isNil(b.order)) {
+      return a.order - b.order
+    }
+    if(!isNil(a.order)) {
+      return -1
+    }
+    if(!isNil(b.order)) {
+      return 1
+    }
+    return 0
+  })
+  const menus = orderedMenu.map(d => {
     const getMenuItem = item => ({
       id: Number(item.id),
       icon: item.icon,
