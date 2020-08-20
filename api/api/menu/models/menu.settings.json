@@ -18,6 +18,9 @@
     "categories": {
       "collection": "category",
       "via": "menu"
+    },
+    "order": {
+      "type": "integer"
     }
   }
 }

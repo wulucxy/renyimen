@@ -565,6 +565,9 @@
               }
             }
           },
+          "order": {
+            "type": "integer"
+          },
           "created_by": {
             "required": [
               "id",
@@ -668,6 +671,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "order": {
+            "type": "integer"
           },
           "created_by": {
             "type": "string"
