@@ -6,7 +6,6 @@ const GET_MENUS = gql`
       id,
       label,
       icon,
-      order,
       categories {
         id,
         label,

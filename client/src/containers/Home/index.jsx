@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { isNil } from 'lodash'
 
 import { MenuContext, StoreContext } from '../../contexts';
 import Banner from './Banner'
@@ -21,7 +22,7 @@ function Home() {
 
   categoryIds.forEach(({ categoryId }) => {
     products.forEach(product => {
-      if(Number(product.category.id) === categoryId) {
+      if(!isNil(product.category) && Number(product.category.id) === categoryId) {
         if(!productsMap.get(categoryId)){
           productsMap.set(categoryId, [product])
         } else {
