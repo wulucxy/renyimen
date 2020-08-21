@@ -1,16 +1,22 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { throttle } from 'lodash'
+import { useLocalStorage } from 'react-use';
 
 import Home from '../containers/Home'
 import { BasicLayout, getChildPath, getSubMenuInfo, findMenu } from '../layouts'
 import { MenuContext } from '../contexts/MenuContext';
 import { prefix, scrollTo } from '../utils'
+import { useCollapsed } from '../hooks'
 
 import logo from '../assets/img/logo.svg'
 
 export default function CoreRouter(){
   const { menus, openKeys, setOpenKeys, setActiveMenu, activeMenu } = useContext(MenuContext);
+
+  const [isCollapsed = false] = useLocalStorage('isCollapsed');
+  // 需要根据外部值来设定默认
+  const [collapsed, onCollapse] = useCollapsed(isCollapsed)
 
   const firstMenuId = getChildPath(menus[0])
 
@@ -73,7 +79,7 @@ export default function CoreRouter(){
     // 激活第一个菜单
     setActiveMenu(firstMenuId)
     // 激活 openKeys
-    setOpenKeys([String(menus[0].id)])
+    !isCollapsed && setOpenKeys([String(menus[0].id)])
   }, [])
 
   // 滚动自动自定位菜单
@@ -104,14 +110,14 @@ export default function CoreRouter(){
       if(activeMenu && activeMenu.parent) {
         const parentId = activeMenu.parent.id
         // todo: 增量支持？
-        setOpenKeys([String(parentId)])
+        !collapsed && setOpenKeys([String(parentId)])
       }
       // 二级菜单选中
       activeSection && setActiveMenu(activeSection)
     }, 300)
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [state])
+  }, [state, collapsed])
 
   return (
     <Fragment>
@@ -122,6 +128,8 @@ export default function CoreRouter(){
         setOpenKeys={setOpenKeys}
         menuItemRender={menuItemRender}
         activeMenu={activeMenu}
+        collapsed={collapsed}
+        onCollapse={onCollapse}
         prefix='renyimen'
         title="任意门"
         tagline="之江实验室信息导航"

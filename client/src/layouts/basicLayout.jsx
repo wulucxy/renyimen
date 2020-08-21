@@ -3,7 +3,6 @@ import { Layout } from 'antd'
 import { withRouter } from 'react-router-dom';
 
 import SiderMenu from './siderMenu'
-import { useCollapsed } from '../hooks'
 
 const { Content, Footer } = Layout
 
@@ -12,6 +11,8 @@ const BasicLayout = (props) => {
     prefix,
     logo,
     theme = 'dark',
+    collapsed = false,
+    onCollapse,
     title,
     tagline,
     menus,
@@ -21,9 +22,6 @@ const BasicLayout = (props) => {
     menuItemRender,
     children
   } = props
-
-  // todo: 需要根据外部值来设定默认
-  const [collapsed, onCollapse] = useCollapsed()
 
   const layoutStyle = collapsed ? {} : { marginLeft: 200 }
 
