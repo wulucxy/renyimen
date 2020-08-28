@@ -10,6 +10,7 @@ const GET_PRODUCTS = gql`
       }
       desc
       url
+      order
       category {
         id
       }

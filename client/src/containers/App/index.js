@@ -5,6 +5,7 @@ import { isNil } from 'lodash'
 
 import { MenuContextProvider, StoreContextProvider } from '../../contexts';
 import CoreRoute from '../../router'
+import { setOrder } from '../../utils'
 
 import { GET_MENUS, GET_BANNERS, GET_PRODUCTS } from '../../queries';
 
@@ -48,18 +49,7 @@ function App() {
   if (loading) return null;
   if (error) return `Error! ${error.message}`;
 
-  const orderedMenu = data.menus.slice().sort((a, b) => {
-    if(!isNil(a.order) && !isNil(b.order)) {
-      return a.order - b.order
-    }
-    if(!isNil(a.order)) {
-      return -1
-    }
-    if(!isNil(b.order)) {
-      return 1
-    }
-    return 0
-  })
+  const orderedMenu = data.menus.slice().sort(setOrder)
   const menus = orderedMenu.map(d => {
     const getMenuItem = item => ({
       id: Number(item.id),

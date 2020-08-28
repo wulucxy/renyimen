@@ -32,6 +32,9 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "order": {
+      "type": "integer"
     }
   }
 }

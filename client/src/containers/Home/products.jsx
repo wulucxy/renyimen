@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Card, Divider } from 'antd';
 import styled from 'styled-components';
 
-import { prefix, publicPath } from '../../utils'
+import { prefix, publicPath, setOrder } from '../../utils'
 
 const defaultIconUrl = require('../../assets/img/sad.png')
 
@@ -20,13 +20,15 @@ function Products(props) {
           // 类别名称
           const { name: categoryName, path } = (categoryIds.find(d => d.categoryId === Number(categoryId)) || {})
           const products = productsMap.get(categoryId)
+          const orderedProducts = products.slice().sort(setOrder)
+
           return (
             <StyledSection id={`${prefix}${path}`} className='product-item' key={categoryId}>
               <Divider>{ categoryName }</Divider>
               <StyledContent className="content-wrapper">
                 <Row gutter={32}>
                   {
-                    products.map(product => {
+                    orderedProducts.map(product => {
                       const productImg = product.iconUrl ? `${publicPath}${product.iconUrl?.url}` : defaultIconUrl
                       return (
                         <Col span={6} key={product.id}>

@@ -1,12 +1,10 @@
-/* eslint-disable prefer-template */
-export const getQueryParams = (location, n) => {
-  const half = location.split(n + '=')[1];
-
-  return half !== undefined ? decodeURIComponent(half.split('&')[0]) : null;
-};
+import { isNil } from 'lodash'
 
 // 前缀
 export const prefix = 'zj-nav-'
+
+// 文件路径前缀
+export const publicPath = process.env.REACT_APP_BACKEND_URL
 
 export const scrollTo = (position) => {
   // 窗口最大滚动距离
@@ -38,5 +36,19 @@ export const scrollTo = (position) => {
   });
 }
 
-// 文件路径前缀
-export const publicPath = process.env.REACT_APP_BACKEND_URL
+// 根据 order 字段进行排序
+// order 同时存在，小者优先排
+// order 只存在一个，优先排
+// 都不存在 order，原始排序
+export const setOrder = (a, b) => {
+  if(!isNil(a.order) && !isNil(b.order)) {
+    return a.order - b.order
+  }
+  if(!isNil(a.order)) {
+    return -1
+  }
+  if(!isNil(b.order)) {
+    return 1
+  }
+  return 0
+}
