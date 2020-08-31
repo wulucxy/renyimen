@@ -97,6 +97,7 @@ const HeaderSearch = (props) => {
           aria-label={placeholder}
           placeholder={placeholder}
           suffix={suffix}
+          allowClear
           onChange={handleInputChange}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
