@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { useApolloClient } from '@apollo/client'
-import { isNil } from 'lodash'
 
 import { MenuContextProvider, StoreContextProvider } from '../../contexts';
 import CoreRoute from '../../router'
@@ -78,7 +77,8 @@ function App() {
 
   const initialState = {
     banners: data.banners,
-    products: data.products
+    products: data.products,
+    client,
   }
 
   return (

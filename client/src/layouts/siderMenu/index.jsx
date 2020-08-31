@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Layout, Menu } from 'antd'
 import { Link } from 'react-router-dom'
 
 import { renderMenu } from '../utils'
 
 const { Sider } = Layout
+
+const siderWidth = 200
 
 const SiderMenu = props => {
   const { logo, collapsed, onCollapse, title, tagline, theme, menus, selectedMenus = [], style, menuItemRender, openKeys, setOpenKeys } = props
@@ -29,25 +31,36 @@ const SiderMenu = props => {
   )
 
   return (
-    <Sider
-      collapsible
-      collapsed={collapsed}
-      onCollapse={onCollapse}
-      style={style}
-     >
-      {logoContent}
-      <Menu
-        theme={theme}
-        mode="inline"
-        selectedKeys={selectedMenus}
-        openKeys={openKeys}
-        onOpenChange={setOpenKeys}
-      >
-        {menus.map(menu => renderMenu(menu, {
-          menuItemRender
-        }))}
-      </Menu>
-    </Sider>
+    <Fragment>
+      <div
+        style={{
+          width: collapsed ? 80 : siderWidth,
+          overflow: 'hidden',
+          flex: `0 0 ${collapsed ? 80 : siderWidth}px`,
+          maxWidth: collapsed ? 80 : siderWidth,
+          minWidth: collapsed ? 80 : siderWidth,
+        }}
+      />
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={onCollapse}
+        style={style}
+       >
+        {logoContent}
+        <Menu
+          theme={theme}
+          mode="inline"
+          selectedKeys={selectedMenus}
+          openKeys={openKeys}
+          onOpenChange={setOpenKeys}
+        >
+          {menus.map(menu => renderMenu(menu, {
+            menuItemRender
+          }))}
+        </Menu>
+      </Sider>
+    </Fragment>
   )
 }
 

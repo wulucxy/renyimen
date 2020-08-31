@@ -13,6 +13,9 @@ body{
 .flex-v-center{
   align-items: center;
 }
+.f1 {
+  flex: 1;
+}
 .primary{
   color: @primaryColor;
 }
@@ -97,6 +100,10 @@ img.responsive{
     height: auto;
     min-height: 160px;
   }
+}
+
+.ant-select-item-option-active:not(.ant-select-item-option-disabled){
+  color: @primaryColor;
 }
 
 .content-banner, .products-container{

@@ -3,6 +3,7 @@ import { Layout } from 'antd'
 import { withRouter } from 'react-router-dom';
 
 import SiderMenu from './siderMenu'
+import GlobalHeader from './globalHeader'
 
 const { Content, Footer } = Layout
 
@@ -22,8 +23,6 @@ const BasicLayout = (props) => {
     menuItemRender,
     children
   } = props
-
-  const layoutStyle = collapsed ? {} : { marginLeft: 200 }
 
   return (
     <div>
@@ -50,7 +49,8 @@ const BasicLayout = (props) => {
               height: '100%'
             }}
           />
-          <Layout className="content-layout" style={layoutStyle}>
+          <Layout className="content-layout">
+            <GlobalHeader collapsed={collapsed} />
             <Content>
               <div id={`${prefix}-content`}>
                 {children}

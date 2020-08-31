@@ -30,9 +30,12 @@ function Products(props) {
                   {
                     orderedProducts.map(product => {
                       const productImg = product.iconUrl ? `${publicPath}${product.iconUrl?.url}` : defaultIconUrl
+
+                      const domId = `${product.category.id}-${product.id}`
+
                       return (
                         <Col span={6} key={product.id}>
-                          <StyledCard onClick={() => handleClick(product)}>
+                          <StyledCard onClick={() => handleClick(product)} data-id={domId}>
                             <a href={product.url} target="_blank" rel="noopener noreferrer">
                               <h3 className="flex flex-v-center link">
                                 <StyledIcon className='product-icon' style={{
