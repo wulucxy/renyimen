@@ -27,6 +27,7 @@ const BasicLayout = (props) => {
   return (
     <div>
         <Layout
+          hasSider
           style={{
             minHeight: '100vh',
           }}
